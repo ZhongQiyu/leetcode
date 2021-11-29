@@ -1,4 +1,4 @@
-public class LeetCodeTest {
+public class LeetCode {
     
     // credit to my fellow students' recommendations
     
