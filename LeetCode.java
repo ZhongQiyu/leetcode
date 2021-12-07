@@ -29,6 +29,54 @@ public class LeetCode {
         }
     }
     
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if ((l1 == null) || (l2 == null)) {  // nodes that are not even existent
+            return null;
+        }
+        else {
+            ListNode currentSum = new ListNode(0);
+            ListNode mainSum = currentSum;
+            ListNode[] nodes = {l1, l2};
+            int sum;
+            int carry;
+            boolean end = false;
+
+            while(!end) {
+                
+                sum = nodes[0].val + nodes[1].val;
+                carry = (int) (sum + currentSum.val) / 10;
+                currentSum.val = (currentSum.val + sum) % 10;
+
+                if ((nodes[0].next == null) && (nodes[1].next == null)) {
+                    end = true;
+                    // if there is an extra bit at the end, then carry
+                    if (carry > 0) {
+                        currentSum.next = new ListNode(carry);
+                        currentSum = currentSum.next;
+                    }
+                }
+                
+                else {
+                    if ((nodes[0].next == null) && (nodes[1].next != null)) {
+                        nodes[0].next = new ListNode(0);
+                    }
+                    else if ((nodes[0].next != null) && (nodes[1].next == null)) {
+                        nodes[1].next = new ListNode(0);
+                    }
+                    currentSum.next = new ListNode(carry);
+                    currentSum = currentSum.next;
+                    nodes[0] = nodes[0].next;
+                    nodes[1] = nodes[1].next;
+                }
+            }
+            return mainSum;
+        }
+    }
+    
+    public int lengthOfLongestSubstring(String s) {
+
+    }
+    
     public static void main(String[] args){
         System.out.println("Welcome to the world of LeetCode");
     }
