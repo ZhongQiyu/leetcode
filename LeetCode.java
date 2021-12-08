@@ -7,6 +7,14 @@ public class LeetCode {
     private String todayDate = "";
     private ArrayList<String> readTutorials = new ArrayList<>();
     
+    # 题解
+    当相加的数小于两个时，直接返回null；是否需要考虑多于三个数的情况？
+    当相加的数等于两个时，使用嵌套for循环，遍历nums直到找到两数相加结果
+    等于target的indices，以array的形式return。
+        
+    感觉可以不用递归然后降一下complexity
+        
+    # 代码
     public int[] twoSum(int[] nums, int target) {
         int numCount = nums.length;
         if(numCount < 2) {
@@ -28,6 +36,10 @@ public class LeetCode {
             return null;
         }
     }
+    
+    # 题解
+        
+    # 代码
     
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if ((l1 == null) || (l2 == null)) {  // nodes that are not even existent
