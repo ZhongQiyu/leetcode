@@ -1,20 +1,24 @@
 public class LeetCode {
-    
-    // credit to my fellow students' recommendations
+    //credit to my fellow students' recommendations
     
     private int problemsSolved = 0;
     private double timeAvg = 0.0;
     private String todayDate = "";
     private ArrayList<String> readTutorials = new ArrayList<>();
     
-    # 题解
-    当相加的数小于两个时，直接返回null；是否需要考虑多于三个数的情况？
-    当相加的数等于两个时，使用嵌套for循环，遍历nums直到找到两数相加结果
-    等于target的indices，以array的形式return。
+    public LeetCode(int problemsSolved, double timeAvg) {
+        this.problemsSolved = problemsSolved;
+        this.timeAvg = timeAvg;
+    }
+    
+    //x
+    //题解
+    //当相加的数小于两个时，直接返回null；是否需要考虑多于三个数的情况？
+    //当相加的数等于两个时，使用嵌套for循环，遍历nums直到找到两数相加结果
+    //等于target的indices，以array的形式return。
+    //感觉可以不用递归然后降一下complexity
         
-    感觉可以不用递归然后降一下complexity
-        
-    # 代码
+    //代码
     public int[] twoSum(int[] nums, int target) {
         int numCount = nums.length;
         if(numCount < 2) {
@@ -37,10 +41,10 @@ public class LeetCode {
         }
     }
     
-    # 题解
+    //y
+    //题解
         
-    # 代码
-    
+    //代码
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if ((l1 == null) || (l2 == null)) {  // nodes that are not even existent
             return null;
@@ -85,11 +89,59 @@ public class LeetCode {
         }
     }
     
+    //z
+    //题解
+        
+    //代码
     public int lengthOfLongestSubstring(String s) {
 
     }
     
+    //35
+    //题解
+        
+    //代码
+    public int binarySearch(int[] arr, int target) {
+        int arrLength = arr.length;
+        int index = arrLength / 2;
+        int compared = 0;
+        int maxSearchCount = Math.log(arrLength) / Math.log(2);
+        int start = 0;
+        int end = arrLength;
+        boolean found = false;
+        while ((!found) && (compared < maxSearchCount)) {
+            if (arr[index] == target) {
+                found = true;
+            }
+            else if (arr[index] > target) {  // meaning to search on the left branch of the current range (start, end)
+                index = index - index / 2;
+                end = index;
+            }
+            else {  // arr[index] < target, meaning to search on the right branch of the current range (start, end)
+                index = index + index / 2;
+                start = index;
+            }
+            compared++;
+            // linear search
+            for (int i = start; i < end; i++) {
+                if (arr[index] == target) {
+                    return index;
+                }
+            }
+        }
+        return index;
+    }
+    
     public static void main(String[] args){
         System.out.println("Welcome to the world of LeetCode");
+        
+        LeetCode runtime = new LeetCode();
+        int[] nums = {1, 3, 5, 6};
+        int target1 = 5;
+        int target2 = 2;
+        int target3 = 7;
+        
+        System.out.println(binarySearch(nums, target1));
+        //System.out.println(binarySearch
     }
 }
