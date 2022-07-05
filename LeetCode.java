@@ -11,7 +11,7 @@ public class LeetCode {
         this.timeAvg = timeAvg;
     }
     
-    //x
+    //1
     //题解
     //当相加的数小于两个时，直接返回null；是否需要考虑多于三个数的情况？
     //当相加的数等于两个时，使用嵌套for循环，遍历nums直到找到两数相加结果
@@ -41,7 +41,7 @@ public class LeetCode {
         }
     }
     
-    //y
+    //2
     //题解
         
     //代码
@@ -89,13 +89,64 @@ public class LeetCode {
         }
     }
     
-    //z
+    //3
     //题解
         
     //代码
     public int lengthOfLongestSubstring(String s) {
 
     }
+    
+    //4
+    //题解
+        
+    //代码
+    /*
+    A subroutine that truncates the original String,
+    so that the processing of palindrome would be easier.
+    */
+    public StringBuilder truncate(String integerString) {
+        StringBuilder truncated;
+        int stringLength = integerString.length();
+        if (stringLength % 2 == 0) {
+            truncated = new StringBuilder(integerString);
+        }
+        else {
+            truncated = new StringBuilder();
+            int mid = stringLength / 2;
+            for (int i = 0; i < stringLength; i++) {
+                if (i != mid) truncated.append(integerString.charAt(i));
+            }
+        }
+        return truncated;
+    }
+
+    /*
+    A subroutine that turns an integer into a String,
+    for determining its being whether a palindrome or
+    not.
+    */
+    public boolean isPalindrome(int x) {
+        String integerString = Integer.toString(x);
+        integerString = new Solution().truncate(integerString).toString();
+        int stringLength = integerString.length();
+        for (int i = stringLength - 1; i >= 0; i--) {
+            if (integerString.charAt(i) != integerString.charAt(stringLength - 1 - i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+    进阶：你能不将整数转为字符串来解决这个问题吗？
+    */
+    
+    //14
+    //题解
+    
+    //代码
+    public 
     
     //35
     //题解
